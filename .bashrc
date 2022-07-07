@@ -7,20 +7,10 @@ alias b='bash'
 alias brc='. ~/.bashrc'
 alias v='vim'
 alias bedit='vim ~/.bashrc'
-alias vedit='vim ~/.SpaceVim.d/init.toml'
 alias cedit='vim ~/.c.sh'
 alias key='cat ~/git/.key'
 alias del='rm -fr'
 alias startx='startx /usr/bin/i3'
-
-scripts='~/git/scripts'
-alias bg="b $scripts/bg.sh"
-alias colors="b $scripts/colors.sh"
-alias dir="b $scripts/dir.sh"
-alias d='dir'
-alias keygen="b $scripts/keygen.sh"
-alias nill="b $scripts/nill.sh"
-alias temps="b $scripts/temps.sh"
 
 alias add='yay -S'
 alias look='yay -Ss --color=auto'
