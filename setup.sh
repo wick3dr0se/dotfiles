@@ -15,7 +15,7 @@ is_yes() {
 
 [[ -d ~/.config ]] || mkdir ~/.config/
 
-for i in kitty/ picom/ rofi/ dunst/ ; do
+for i in .config/* ; do
   [[ ! -d ~/.config/$i ]] && {
     cp -r $i ~/.config/
     pass=0
@@ -35,6 +35,9 @@ read -p 'Install packages list? [y/n]: '
 
 is_yes && {
   [[ $yay ]] && {
+    sudo pacman -S pkgconf make fakeroot gcc git
+    git clone https://aur.archlinux.org/yay
+    cd yay && makepkg -si
     yay -S - < packages
     out 'Installed packages with yay' 2
   } || {
