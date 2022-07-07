@@ -1,7 +1,7 @@
 #!/bin/bash
 
 out() {
-  sgr='Succes'
+  sgr='Success'
   [[ $2 == 1 ]] && sgr='Error'
   
   printf '[\e[1;3%sm%s\e[0m]: %s\n' "$2" "$sgr" "$1"
@@ -48,5 +48,5 @@ read -p 'Setup the BASH prompt & framework? [y/n]: '
 
 is_yes && {
   cp -r .bashin/ .bashrc .c.sh ~/
-  out 'Prompt successfully set!' 2
+  out 'Prompt & framework set' 2
 } || out 'Aborting prompt & framework setup' 1 && exit
