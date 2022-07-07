@@ -1,0 +1,15 @@
+[global]
+  font = Hack 14
+  background = "#232329"
+  foreground = "#ffffff"
+  width = (0, 340)
+  height = 160
+  transparency = 40
+  frame_width = 2
+  frame_color = "#ff427b"
+  padding = 6
+  seperator_color = frame
+  seperator_height = 2
+  sort = yes
+
+  browser = /usr/bin/vivaldi-stable

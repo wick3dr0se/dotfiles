@@ -1,0 +1,93 @@
+set $mod Mod4
+font pango:Hack 14
+floating_modifier $mod
+new_window pixel 0
+gaps inner 8
+
+default_border pixel 2
+default_floating_border pixel 2
+client.focused #7aa2f7 #7aa2f7 #ffffff #7aa2f7 #7aa2f7 
+client.unfocused #ff427b #ff427b #ffffff #ff427b #ff427b
+
+# Startup
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/bin/dunst
+exec --no-startup-id picom
+exec --no-startup-id blueberry-tray
+exec --no-startup-id nm-applet
+exec --no-startup-id feh --bg-fill img
+
+# Launch
+bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
+bindsym $mod+F1 exec kitty bash -c "vim ~/.config/i3/config"
+bindsym $mod+Return exec kitty
+bindsym $mod+w exec vivaldi-stable
+
+# volume
+bindsym F2 exec pactl set-sink-volume 0 -3%
+bindsym F3 exec pactl set-sink-volume 0 +3%
+bindsym F4 exec pactl set-sink-mute 0 toggle
+
+# kill focused window
+bindsym $mod+x kill
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+#move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split direction
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+space focus mode_toggle
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+
+# float
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+
+# reload the configuration file
+bindsym $mod+r reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# i3bar
+bar {
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf 
+    position top
+}
+
+# logout of i3
+bindsym $mod+l exit
+
+# rofi bindings fancy application menu
+bindsym $mod+m exec rofi -show drun
+# switch windows like Windows does with rofi
+bindsym $mod+Tab exec rofi -show window
+# run command
+bindsym $mod+c exec rofi -show run
