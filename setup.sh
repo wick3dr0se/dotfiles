@@ -22,9 +22,8 @@ for i in .config/* ; do
   } || {
     read -p "$i exist. Do you want to overwrite?"
     
-    is_yes && cp -r $i ~/.config/ || {
+    is_yes && cp -r $i ~/.config/ ||
       out "Failed to setup $failed_dots" 1
-    }
   }
 done
 
@@ -41,10 +40,10 @@ is_yes && {
     git clone https://aur.archlinux.org/yay
     cd yay && makepkg -si
     yay -S - < packages
-    out 'Installed packages with yay' 2
+    out 'Packages installed with yay' 2
   } || {
     pacman -S - < packages
-    out 'Installed packages with pacman' 2
+    out 'Packages installed with pacman' 2
   }
 } || out 'Package installation aborted' 1
 
