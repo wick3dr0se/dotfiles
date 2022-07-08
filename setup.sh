@@ -22,10 +22,12 @@ for i in .config/* ; do
   } || {
     read -p "$i exist. Do you want to overwrite?"
     
-    is_yes && cp -r $i ~/.config/ ||
-      out "Failed to setup $i" 1
+    is_yes && cp -r $i ~/.config/ || {
+      out "Failed to setup $failed_dots" 1
+    }
   }
 done
+
 [[ $pass ]] && out 'Dotfile configurations set' 2
 
 
