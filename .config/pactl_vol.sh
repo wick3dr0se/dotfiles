@@ -6,7 +6,7 @@ left=$(pactl get-sink-volume $sink | awk '/front-left/{print $5}')
 right=$(pactl get-sink-volume $sink | awk '/front-right/{print $12}')
 
 [[ $left != $right ]] && {
-  read -p 'Speakers out of sink. Would you like to auto-balance? [y/n] '
+  read -p 'Speakers out of sync. Would you like to auto-balance? [y/n] '
   [[ ${REPLY,,} == [y] || ${REPLY,,} == yes ]] && 
     pactl set-sink-volume $sink 0%
     echo 'Balancing sucessful'
